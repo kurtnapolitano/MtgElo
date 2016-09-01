@@ -1,0 +1,23 @@
+﻿<Window x:Class="MtgElo.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:MtgElo.Wpf"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <wpf:EnumBooleanConverter x:Key="enumBooleanConverter" />
+        </Grid.Resources>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Width="60" GroupName="Filter" IsChecked="{Binding Path=Filter.IsAll}">All</RadioButton>
+                <RadioButton Width="100" GroupName="Filter" IsChecked="{Binding Path=Filter.IsConstructed}">Constructed</RadioButton>
+                <RadioButton Width="100" GroupName="Filter" IsChecked="{Binding Path=Filter.IsCommander}">Commander</RadioButton>
+            </StackPanel>
+            <DataGrid ItemsSource="{Binding Decks}" />
+        </StackPanel>
+    </Grid>
+</Window>
